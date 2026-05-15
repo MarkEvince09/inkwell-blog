@@ -74,8 +74,17 @@ export function getCachedPostSummaries(): Omit<Post, 'content'>[] {
     .map((k) => {
       const raw = postCache.get(k)!
       const post = JSON.parse(raw) as Post
-      const { content: _, ...summary } = post
-      return summary
+      return {
+        title: post.title,
+        slug: post.slug,
+        date: post.date,
+        excerpt: post.excerpt,
+        coverImage: post.coverImage,
+        author: post.author,
+        categories: post.categories,
+        tags: post.tags,
+        readingTime: post.readingTime,
+      }
     })
     .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
 }

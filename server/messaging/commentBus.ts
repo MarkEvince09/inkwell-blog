@@ -8,7 +8,7 @@ export interface CommentEvent {
   createdAt: string
 }
 
-export interface Comment extends CommentEvent {}
+export type Comment = CommentEvent
 
 const TOPIC = 'post-comments'
 const queue: CommentEvent[] = []

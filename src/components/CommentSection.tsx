@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { fetchComments, submitComment, type Comment } from '../lib/api'
 import './CommentSection.css'
 
@@ -13,17 +13,20 @@ export function CommentSection({ postSlug }: CommentSectionProps) {
   const [status, setStatus] = useState<'idle' | 'sending' | 'sent' | 'error'>('idle')
   const [loading, setLoading] = useState(true)
 
-  const loadComments = useCallback(async () => {
-    const data = await fetchComments(postSlug)
-    setComments(data ?? [])
-    setLoading(false)
-  }, [postSlug])
-
   useEffect(() => {
-    loadComments()
-    const interval = setInterval(loadComments, 2000)
-    return () => clearInterval(interval)
-  }, [loadComments])
+    function poll() {
+      void fetchComments(postSlug).then((data) => {
+        setComments(data ?? [])
+        setLoading(false)
+      })
+    }
+    const initial = window.setTimeout(poll, 0)
+    const interval = window.setInterval(poll, 2000)
+    return () => {
+      window.clearTimeout(initial)
+      window.clearInterval(interval)
+    }
+  }, [postSlug])
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault()
@@ -34,8 +37,10 @@ export function CommentSection({ postSlug }: CommentSectionProps) {
     if (ok) {
       setBody('')
       setStatus('sent')
-      setTimeout(() => setStatus('idle'), 2000)
-      setTimeout(loadComments, 300)
+      window.setTimeout(() => setStatus('idle'), 2000)
+      window.setTimeout(() => {
+        void fetchComments(postSlug).then((data) => setComments(data ?? []))
+      }, 300)
     } else {
       setStatus('error')
     }

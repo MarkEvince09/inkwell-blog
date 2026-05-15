@@ -85,3 +85,31 @@
   font-size: 0.8rem;
   color: var(--text-muted);
 }
+
+@media (max-width: 640px) {
+  .post-card {
+    flex-direction: column;
+    min-height: unset;
+  }
+
+  .post-card__image-link {
+    flex: none;
+    max-width: none;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    min-height: unset;
+  }
+
+  .post-card__placeholder {
+    min-height: unset;
+    aspect-ratio: 16 / 9;
+  }
+
+  .post-card__body {
+    padding: 1.15rem 1.25rem;
+  }
+
+  .post-card__excerpt {
+    -webkit-line-clamp: 2;
+  }
+}

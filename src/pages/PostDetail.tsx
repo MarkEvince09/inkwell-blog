@@ -9,17 +9,22 @@ import { usePageTitle, useMetaDescription } from '../hooks/usePageTitle'
 import type { Post } from '../types/post'
 import './PostDetail.css'
 
-export function PostDetail() {
-  const { slug } = useParams<{ slug: string }>()
+function PostNotFound() {
+  return (
+    <div className="post-not-found content-panel">
+      <h1>Post not found</h1>
+      <p>The article you are looking for does not exist.</p>
+      <Link to="/blog">Back to blog</Link>
+    </div>
+  )
+}
+
+function PostDetailView({ slug }: { slug: string }) {
   const [post, setPost] = useState<Post | null | undefined>(undefined)
 
   useEffect(() => {
-    if (!slug) {
-      setPost(null)
-      return
-    }
     let cancelled = false
-    fetchPost(slug).then((result) => {
+    void fetchPost(slug).then((result) => {
       if (!cancelled) setPost(result)
     })
     return () => {
@@ -39,13 +44,7 @@ export function PostDetail() {
   }
 
   if (!post) {
-    return (
-      <div className="post-not-found content-panel">
-        <h1>Post not found</h1>
-        <p>The article you are looking for does not exist.</p>
-        <Link to="/blog">Back to blog</Link>
-      </div>
-    )
+    return <PostNotFound />
   }
 
   return (
@@ -82,4 +81,12 @@ export function PostDetail() {
       </footer>
     </article>
   )
+}
+
+export function PostDetail() {
+  const { slug } = useParams<{ slug: string }>()
+  if (!slug) {
+    return <PostNotFound />
+  }
+  return <PostDetailView key={slug} slug={slug} />
 }
