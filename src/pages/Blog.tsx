@@ -8,7 +8,7 @@ export function Blog() {
   const posts = getAllPosts()
 
   return (
-    <div className="blog-page">
+    <div className="blog-page content-panel">
       <header className="page-header">
         <h1>All posts</h1>
         <p>{posts.length} articles on development, design, and more.</p>

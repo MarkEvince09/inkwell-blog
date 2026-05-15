@@ -21,7 +21,7 @@ export function FilteredPosts({ type }: FilteredPostsProps) {
   usePageTitle(`${label}: ${decodedName}`)
 
   return (
-    <div className="blog-page">
+    <div className="blog-page content-panel">
       <header className="page-header">
         <h1>
           {label}: <span className="filter-name">{decodedName}</span>

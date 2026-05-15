@@ -1,8 +1,8 @@
 .hero {
   text-align: center;
-  padding: 2rem 0 3.5rem;
-  max-width: 640px;
-  margin: 0 auto;
+  padding: 2.5rem 2rem 3rem;
+  max-width: 100%;
+  margin: 0 auto 2rem;
 }
 
 .hero__eyebrow {
@@ -48,7 +48,7 @@
 }
 
 .home__latest {
-  padding-bottom: 2rem;
+  padding: 1.75rem 1.5rem 2rem;
 }
 
 .section-header {

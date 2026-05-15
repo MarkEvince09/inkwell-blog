@@ -10,7 +10,7 @@ export function Home() {
 
   return (
     <div className="home">
-      <section className="hero">
+      <section className="hero content-panel">
         <p className="hero__eyebrow">Portfolio Blog</p>
         <h1 className="hero__title">Thoughts on code, design, and building on the web.</h1>
         <p className="hero__subtitle">
@@ -22,7 +22,7 @@ export function Home() {
         </Link>
       </section>
 
-      <section className="home__latest">
+      <section className="home__latest content-panel">
         <div className="section-header">
           <h2>Latest posts</h2>
           <Link to="/blog" className="section-header__link">
