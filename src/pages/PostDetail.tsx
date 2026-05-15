@@ -1,17 +1,41 @@
+import { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
-import { getPostBySlug } from '../lib/posts'
+import { fetchPost } from '../lib/api'
 import { formatDate } from '../lib/formatDate'
 import { MarkdownRenderer } from '../components/MarkdownRenderer'
 import { CategoryTag } from '../components/CategoryTag'
 import { usePageTitle, useMetaDescription } from '../hooks/usePageTitle'
+import type { Post } from '../types/post'
 import './PostDetail.css'
 
 export function PostDetail() {
   const { slug } = useParams<{ slug: string }>()
-  const post = slug ? getPostBySlug(slug) : undefined
+  const [post, setPost] = useState<Post | null | undefined>(undefined)
 
-  usePageTitle(post?.title ?? 'Post not found')
+  useEffect(() => {
+    if (!slug) {
+      setPost(null)
+      return
+    }
+    let cancelled = false
+    fetchPost(slug).then((result) => {
+      if (!cancelled) setPost(result)
+    })
+    return () => {
+      cancelled = true
+    }
+  }, [slug])
+
+  usePageTitle(post?.title ?? (post === undefined ? 'Loading…' : 'Post not found'))
   useMetaDescription(post?.excerpt ?? 'The requested post could not be found.')
+
+  if (post === undefined) {
+    return (
+      <div className="post-detail content-panel">
+        <p className="post-detail__loading">Loading post…</p>
+      </div>
+    )
+  }
 
   if (!post) {
     return (
