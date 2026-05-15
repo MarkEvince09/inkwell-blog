@@ -5,25 +5,32 @@
   --font-heading: 'Source Serif 4', Georgia, serif;
   --font-mono: ui-monospace, 'Cascadia Code', Consolas, monospace;
 
-  --bg: #faf9f7;
+  --bg-gradient: linear-gradient(
+    160deg,
+    #0a0a0a 0%,
+    #1a1208 25%,
+    #3d1f0a 50%,
+    #c45c26 80%,
+    #e88b3a 100%
+  );
   --surface: #ffffff;
   --text-heading: #1a1814;
-  --text-body: #3d3a36;
-  --text-muted: #6b6560;
-  --border: #e8e4df;
-  --accent: #c45c26;
-  --accent-hover: #a34d1f;
-  --accent-bg: rgba(196, 92, 38, 0.1);
-  --tag-bg: #eef2f6;
-  --tag-text: #4a6278;
-  --code-bg: #f0ede8;
-  --shadow: 0 8px 24px rgba(26, 24, 20, 0.08);
+  --text-body: #2d2926;
+  --text-muted: #5c534c;
+  --border: #e8e0d8;
+  --accent: #e88b3a;
+  --accent-hover: #c45c26;
+  --accent-bg: rgba(232, 139, 58, 0.15);
+  --tag-bg: #f5f0eb;
+  --tag-text: #5c4a3a;
+  --code-bg: #f5f0eb;
+  --shadow: 0 12px 32px rgba(0, 0, 0, 0.25);
+  --panel-radius: 12px;
 
   font-family: var(--font-sans);
   font-size: 16px;
   line-height: 1.5;
   color: var(--text-body);
-  background: var(--bg);
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -39,6 +46,8 @@
 body {
   margin: 0;
   min-height: 100svh;
+  background: var(--bg-gradient);
+  background-attachment: fixed;
 }
 
 #root {
