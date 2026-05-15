@@ -1,6 +1,10 @@
 .not-found {
   text-align: center;
-  padding: 5rem 1rem;
+  padding: 4rem 2rem;
+  background: var(--surface);
+  border-radius: var(--panel-radius);
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border);
 }
 
 .not-found h1 {

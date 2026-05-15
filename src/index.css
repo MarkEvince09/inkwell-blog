@@ -74,6 +74,14 @@ button:focus-visible {
   outline-offset: 2px;
 }
 
+.content-panel {
+  background: var(--surface);
+  color: var(--text-body);
+  border-radius: var(--panel-radius);
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border);
+}
+
 .filter-name {
   text-transform: capitalize;
 }
