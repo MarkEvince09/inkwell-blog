@@ -1,6 +1,8 @@
 import cors from 'cors'
 import express from 'express'
+import { commentsRouter } from './routes/comments.js'
 import { postsRouter } from './routes/posts.js'
+import { startCommentConsumer } from './messaging/commentBus.js'
 import { warmPostCache } from './services/posts.js'
 
 const app = express()
@@ -14,10 +16,13 @@ app.get('/api/health', (_req, res) => {
 })
 
 app.use('/api/posts', postsRouter)
+app.use('/api/posts/:slug/comments', commentsRouter)
 
 async function start() {
   const count = await warmPostCache()
+  startCommentConsumer()
   console.log(`[cache] warmed ${count} posts as JSON strings`)
+  console.log('[kafka-mock] comment consumer started')
   app.listen(PORT, () => {
     console.log(`[server] http://localhost:${PORT}`)
   })
