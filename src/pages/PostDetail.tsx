@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import { fetchPost } from '../lib/api'
 import { formatDate } from '../lib/formatDate'
+import { CommentSection } from '../components/CommentSection'
 import { MarkdownRenderer } from '../components/MarkdownRenderer'
 import { CategoryTag } from '../components/CategoryTag'
 import { usePageTitle, useMetaDescription } from '../hooks/usePageTitle'
@@ -75,6 +76,7 @@ export function PostDetail() {
         )}
       </header>
       <MarkdownRenderer content={post.content} />
+      <CommentSection postSlug={post.slug} />
       <footer className="post-detail__footer">
         <Link to="/blog">&larr; Back to all posts</Link>
       </footer>
