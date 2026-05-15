@@ -7,25 +7,26 @@
 
   --bg-gradient: linear-gradient(
     160deg,
-    #0a0a0a 0%,
-    #1a1208 25%,
-    #3d1f0a 50%,
-    #c45c26 80%,
-    #e88b3a 100%
+    #b84a1a 0%,
+    #c45c26 35%,
+    #e88b3a 70%,
+    #f5b84a 100%
   );
-  --surface: #ffffff;
-  --text-heading: #1a1814;
-  --text-body: #2d2926;
-  --text-muted: #5c534c;
-  --border: #e8e0d8;
-  --accent: #e88b3a;
-  --accent-hover: #c45c26;
-  --accent-bg: rgba(232, 139, 58, 0.15);
-  --tag-bg: #f5f0eb;
-  --tag-text: #5c4a3a;
-  --code-bg: #f5f0eb;
-  --shadow: 0 12px 32px rgba(0, 0, 0, 0.25);
+  --surface: #0a0a0a;
+  --text-heading: #ffffff;
+  --text-body: #ffffff;
+  --text-muted: rgba(255, 255, 255, 0.72);
+  --border: #2a2a2a;
+  --accent: #f5b84a;
+  --accent-hover: #e88b3a;
+  --accent-bg: rgba(232, 139, 58, 0.22);
+  --tag-bg: #141414;
+  --tag-text: #ffffff;
+  --code-bg: #141414;
+  --shadow: 0 12px 32px rgba(0, 0, 0, 0.45);
   --panel-radius: 12px;
+  --status-ok: #6ee7a0;
+  --status-err: #f87171;
 
   font-family: var(--font-sans);
   font-size: 16px;
@@ -48,6 +49,7 @@ body {
   min-height: 100svh;
   background: var(--bg-gradient);
   background-attachment: fixed;
+  color: var(--text-body);
 }
 
 #root {

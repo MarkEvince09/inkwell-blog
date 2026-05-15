@@ -41,7 +41,7 @@
   align-self: flex-start;
   padding: 0.65rem 1.25rem;
   background: var(--accent);
-  color: #fff;
+  color: #0a0a0a;
   border: none;
   border-radius: 8px;
   font-weight: 600;
@@ -63,11 +63,11 @@
 }
 
 .comments__status--ok {
-  color: #2d6a4f;
+  color: var(--status-ok);
 }
 
 .comments__status--err {
-  color: #9b2226;
+  color: var(--status-err);
 }
 
 .comments__loading,

@@ -11,7 +11,7 @@
 
 .pill--category {
   background: var(--accent-bg);
-  color: var(--accent);
+  color: var(--text-body);
 }
 
 .pill--category:hover {
@@ -25,8 +25,8 @@
 }
 
 .pill--tag:hover {
-  background: var(--tag-text);
-  color: #fff;
+  background: var(--accent);
+  color: #0a0a0a;
 }
 
 .pill-list {
