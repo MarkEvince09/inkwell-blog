@@ -6,7 +6,10 @@
 
 .empty-state {
   text-align: center;
-  padding: 3rem 1rem;
+  padding: 3rem 1.5rem;
   color: var(--text-muted);
   font-size: 1.05rem;
+  background: var(--surface);
+  border-radius: var(--panel-radius);
+  border: 1px solid var(--border);
 }

@@ -15,7 +15,7 @@ export function PostDetail() {
 
   if (!post) {
     return (
-      <div className="post-not-found">
+      <div className="post-not-found content-panel">
         <h1>Post not found</h1>
         <p>The article you are looking for does not exist.</p>
         <Link to="/blog">Back to blog</Link>
@@ -24,7 +24,7 @@ export function PostDetail() {
   }
 
   return (
-    <article className="post-detail">
+    <article className="post-detail content-panel">
       {post.coverImage && (
         <img src={post.coverImage} alt="" className="post-detail__cover" />
       )}
